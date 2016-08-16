@@ -1,0 +1,28 @@
+﻿@model List<string>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div> 
+        @using (Html.BeginForm("Save", "Xss", FormMethod.Post))
+        {
+            <input type="text" id="notice" name="msg" />
+            <input type="submit" value="发留言" />
+        }
+
+        @foreach (string  item in Model)
+        {
+            <div>@Html.Raw(item) </div>
+            <hr />
+        }
+    </div>
+</body>
+</html>

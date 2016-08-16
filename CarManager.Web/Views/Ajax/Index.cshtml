@@ -1,0 +1,31 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    @Scripts.Render("~/Scripts/Jquery")
+    <script>
+        function showResult(json) {
+
+        }
+    </script>
+</head>
+<body>
+    <div> 
+        @*$.getJson("url",function(){
+        
+        })*@
+
+        @using (Ajax.BeginForm("saveStudent", "Ajax",new AjaxOptions {OnSuccess="showResult",OnBegin="load" }))
+        {
+
+        }
+    </div>
+</body>
+</html>

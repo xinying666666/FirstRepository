@@ -1,0 +1,156 @@
+1.自己实现身份验证
+2..redis mancache 缓存
+3.volatile 类型
+4.阿里云 nuget源  http://nugetLitdos.com/nuget   http://nugetcache.fishlee.net/v3/omdex.json
+5.t4 编辑器 微软没有提供   只有第三方提供     devart T4  下载网址 https://www.devart.com/t4-editor/download.html  已解决
+6.微软mvc 中json序列化框架 是用的javascript序列化框架  能力有限  我们需要自己扩展
+在api中微软默认使用的是json.net
+7.第三方 验证框架 FluentValidation
+8.权限
+8.1 实体权限   实体都集成一个 BaseEntity 类
+权限编号 实体类型  实体编号 角色
+   1         Car        5       admin    实体权限
+8.2菜单权限  controller + action
+
+菜单编号 菜单名称  上一级菜单编号   
+
+每一个action的权限
+
+aciton 和功能点关联起来
+
+9 异常处理
+
+
+10
+   mvc 显示的模板必须在 Shared 的  DisplayTemplates
+   mvc 编辑的模板必须在 Shared 的  EditorTemplates 
+
+   类或者字段显示模板的时候 打标记 [UIHint("模板名不加后缀")]
+
+11
+mvc 中可以在 控制器的控制器上打上路由的标机
+
+
+在路由类的的RegisterRoutes 最上面加上   routes.MapMvcAttributeRoutes();
+
+12.扩展 helper    方法一 通过视图文件  方式扩张 
+
+直接写在 你的显示视图中 或 将App_Code 中将一个视图将扩展的helper都放进去
+@helper DisplayPrice(double price)
+{
+    @String.Format("{0:C}", price)
+}
+方法二 通过通过静态类的方式扩张  
+
+12. webapi
+12.1 RESETful 中文解释是  表现状态转化，是一种标准 他是2000年，被一个博士论文中提出的
+12.2 web api 正是微软在.net 平台上实现的RESTful标准为开发者提供的开发框架，虽然它看起来
+12.3创建 webapi 项目，演示给大家看下，在创建的时候，解释mvc 与webapi之间的关系
+12.4创建好了webapi 之后我们测试或者调用它 ，一般情况下webapi是为手机提供接口，那么我们也
+12.5演示js调用webapi 的方法 同时介绍FormUrl与FormBody区别
+12.6下面说一下通过js调用webapi 的跨域问题跨域并不是什么问题，是浏览器针对用户数据的保护
+12.7 操作+资源
+GET
+
+13.vs 2015 T4 模板
+
+vs 2015 T4 模板所在的文件夹  E:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\Web\Mvc\Scaffolding\Templates
+
+在自己项目中使用的时候 要单独单独将一个文件夹 CodeTemplate  将  模板文件拷贝打这个文件夹下面  文件夹 名字约定好了不能改变 CodeTemplate
+
+
+14 bootcdn.cn  
+ 稳定 快速 免费的开源项目CDN 服务
+
+
+
+15 本机注册ip地址
+netsh> http add urlacl url=http://*:6306/ user=Everyone
+
+16 跨域问题 跨域是浏览器对数据的保护 是一种安全机制
+
+跨域问题 解决方法 ：
+1.1jsonp 
+public HttpResponseMessage GetBooks(string  callBack)
+        {
+            string func= string.Format("{0}({1})", callBack,Newtonsoft.Json.JsonConvert.SerializeObject(db.Books));
+
+            return new  HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content=new StringContent(func, Encoding.UTF8,"text/javascript")
+            };
+
+        }
+1.2 .neget 上有jsonp框架  
+2.1 cors  w3c 标准 允许服务端在返回接口的头部允许 哪一个源访问api接口  需要服务端直接  也需要浏览器端支持
+
+17  api 文档的生成
+
+swashbuckle api 文档美化插件
+
+18.
+
+api 格式化扩展
+   config.Formatters.JsonFormatter.MediaTypeMappings.Add(new QueryStringMapping("format","json","application/json"));
+            config.Formatters.XmlFormatter.MediaTypeMappings.Add(new QueryStringMapping("format", "xml", "application/json"));
+
+api 身份认证
+webapi 身份验证 http 基本身份验证
+等身份认证
+
+摘要式身份认证
+
+
+19 实时推送  SignalR的Web 实时推送Demo
+
+20.
+
+api插件系统 
+自己弄一个服务器 创建一个控制台程序
+应用Microsoft ASP.NET Web API 2.2 Self Host 5.2.3  类库
+
+
+21  //.net 中调用 webservice 接口
+            HttpClient client = new HttpClient();
+            //再引用 using System.Net.Http.Formatting; 强化 using System.Net.Http;
+
+            client.GetStringAsync("");
+
+22.unity的生命周期
+
+23. model 和viewModel自动映射
+
+24. 权限系统
+改造微软的  identity 难度太大 identity必须要用ef 
+
+权限系统最重要的是认证和授权 
+认证的用户才能授权 授权才有权限
+authentic认证  autorize 授权
+
+权限系统标准  1.开发系统简单 2. 灵活  3.给系统管理员简单又灵活的界面 
+cms 微软推荐的开源框架
+
+权限的分类 1. 数据的权限  
+		   2. 菜单的权限
+		   3. 按钮的权限
+
+25 windows powershell 自动将类同步到数据当中去
+
+powershell abc.ps1   要启动的项目 属性->生成事件 后期生成事件命令行 
+
+
+26 ILmerge  包合并
+
+27  VS 扩展  添加任何文件插件   Add ANY Files   开源框架  可以用于研究  怎么在vs中右击选项卡中添加选项
+
+28  wpf 扩展工具  Blend for visual studio
+    
+	专门设计窗口的  
+
+	Blend for visual studio 给设计人员设计xaml窗口的工具
+
+	wpf mvvm设计模式
+
+
+
+

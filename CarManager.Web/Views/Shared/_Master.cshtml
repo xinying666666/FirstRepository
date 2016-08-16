@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title - 汽车管理系统</title>
+    @Styles.Render("~/Style/Bootstrap")
+    @Styles.Render("~/Style/Font-Awesome")
+    @Styles.Render("~/Style/Fonts-Googleapis")
+    @Styles.Render("~/Style/Ace-Template")
+    @RenderSection("style",required:false)@*//渲染一个节点 如果用户写这个节点了 让用户把自己的css样式加载这个页面中*@
+</head>
+<body class="no-skin">
+    @Html.Partial("_NavBarPartialPage")  @*导航的部分视图*@
+
+    <div class="main-container" id="main-container">
+        <script type="text/javascript">
+				try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+        </script>
+        @Html.Partial("_SideBarPartialPage")
+        @RenderBody()
+        @Html.Partial("_FooterPartialPage")
+        <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+            <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+        </a>
+    </div>
+    @Scripts.Render("~/Scripts/Extra")
+    @Scripts.Render("~/Scripts/Jquery")
+    @Scripts.Render("~/Scripts/Bootstrap")
+    @Scripts.Render("~/Scripts/Ace-Elements")
+    @Scripts.Render("~/Scripts/Ace")
+
+    @RenderSection("scripts", required: false)@*//渲染一个节点 如果用户写这个节点了 让用户把自己的js样式加载这个页面中*@
+</body>
+</html>
